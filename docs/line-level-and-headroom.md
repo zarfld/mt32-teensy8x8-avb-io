@@ -1,5 +1,23 @@
 # Line Level and Headroom
 
+## Units Policy
+
+When discussing audio voltage levels, this project uses the following conventions:
+
+- **dBu** — voltage level referenced to 0.7746 Vrms (the voltage that would deliver 1 mW into 600 Ω). Used for **unloaded audio voltage levels**. This is the standard unit for professional audio.
+  - +4 dBu nominal = 1.228 Vrms
+  - +24 dBu = 12.28 Vrms
+- **dBV** — voltage level referenced to 1 Vrms. Used **only** when a level is explicitly referenced to 1 Vrms.
+  - −10 dBV nominal (consumer) = 0.316 Vrms
+- **dBm** — power level referenced to 1 mW into a **specified load impedance**. Use dBm **only when a load impedance is explicitly stated** (commonly 600 Ω). Do not use dBm to describe a voltage level without stating the load.
+- **Do not mix dBu and dBm for the same line-level statement** without explicitly stating the load.
+
+Where this document previously said "+10 dBu / +10 dBm class", read as:
+
+> approximately +10 dBu-class voltage level — depending on loading and actual measurement; "+10 dBm" only applies if explicitly specified into a defined load (typically 600 Ω).
+
+---
+
 ## Overview
 
 This document summarises the working assumptions about analog signal levels and headroom in the current prototype. The Teensy8x8AudioBoard is a useful development and bring-up platform; it is not intended to be a final pro-line interface.
@@ -18,7 +36,7 @@ This is acceptable for prototype bring-up and functional testing. It is **not** 
 
 Based on the TLV320AIC3104 datasheet and the Teensy8x8AudioBoard design:
 
-- Output maximum level is roughly in the **+10 dBu / +10 dBm class** (differential output), depending on load impedance and specific board configuration.
+- Output maximum level is roughly in the **approximately +10 dBu-class voltage level** (differential output), depending on load impedance and specific board configuration. ("+10 dBm" would only apply if explicitly specified into a defined 600 Ω load.)
 - These figures are working estimates. Actual measurements must be taken from the board under test. See `docs/test-equipment.md` and `docs/bringup-plan.md`, Stage 5.
 
 ### 3. Codec Input Range Is Limited

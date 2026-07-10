@@ -1,12 +1,12 @@
-mt32_ffc_pin,mt32_signal,direction,teensy8x8_signal,teensy_mcu_pin_equiv,notes,verified
-6,ADC_RST_N_OUT,MT32→Board,Codec reset / GPIO,GPIO22 equivalent,Active-low. Verify polarity and drive level before connect.,NO
-9,SDIOD_IN,Board→MT32,TDM DO (codec output),Pin 8 equivalent,Capture audio from board.,NO
-13,SDIOB_OUT,MT32→Board,TDM DI (codec input),Pin 7 equivalent,Playback audio to board.,NO
-17,SCLK_OUT,MT32→Board,BCLK,Pin 21 equivalent,Board may invert BCLK — see docs/tdm-format-open-questions.md.,NO
-19,LRCK_OUT,MT32→Board,LRCK / SYNC,Pin 20 equivalent,Frame sync. Verify polarity.,NO
-21,MCLK_OUT,MT32→Board,MCLK,Pin 23 equivalent,12.288 or 24.576 MHz — verify frequency.,NO
-23,SDA,Bidirectional,I2C SDA,Teensy Wire SDA,Shared bus with PCA9546. Verify pull-up location.,NO
-24,SCL,MT32→Board,I2C SCL,Teensy Wire SCL,Verify pull-up location.,NO
-TBD,5V,Power,5V power input,Board 5V rail,Verify MT32 current capability before connecting. SAFETY CRITICAL.,NO
-TBD,3V3,Power,3.3V power,Board 3.3V rail,Do not back-feed regulators. Verify isolation strategy. SAFETY CRITICAL.,NO
-TBD,GND,Power,GND,GND,Multiple GND pins — connect all.,NO
+mt32_ffc_pin,mt32_signal,direction,logical_signal_name,teensy_mcu_pin_equiv,physical_board_connection_point,notes,verified
+6,ADC_RST_N_OUT,MT32→Board,Codec reset / GPIO,GPIO22 equivalent,TBD — trace on actual board before connecting,Active-low. Verify polarity and drive level before connect. Do not assume this is present on the EXPAND header unless verified.,NO
+9,SDIOD_IN,Board→MT32,TDM DO (codec output),Pin 8 equivalent,TBD — trace on actual board before connecting,Capture audio from board. Do not assume this is present on the EXPAND header unless verified.,NO
+13,SDIOB_OUT,MT32→Board,TDM DI (codec input),Pin 7 equivalent,TBD — trace on actual board before connecting,Playback audio to board. Do not assume this is present on the EXPAND header unless verified.,NO
+17,SCLK_OUT,MT32→Board,BCLK,Pin 21 equivalent,TBD — trace on actual board before connecting,Board may invert BCLK — see docs/tdm-format-open-questions.md. Do not assume this is present on the EXPAND header unless verified.,NO
+19,LRCK_OUT,MT32→Board,LRCK / SYNC,Pin 20 equivalent,TBD — trace on actual board before connecting,Frame sync. Verify polarity. Do not assume this is present on the EXPAND header unless verified.,NO
+21,MCLK_OUT,MT32→Board,MCLK,Pin 23 equivalent,TBD — trace on actual board before connecting,12.288 or 24.576 MHz — verify frequency. Do not assume this is present on the EXPAND header unless verified.,NO
+23,SDA,Bidirectional,I2C SDA,Teensy Wire SDA,TBD — trace on actual board before connecting,Shared bus with PCA9546. Verify pull-up location.,NO
+24,SCL,MT32→Board,I2C SCL,Teensy Wire SCL,TBD — trace on actual board before connecting,Verify pull-up location.,NO
+TBD,5V,Power,5V power input,Board 5V rail,Power header — verify current strategy before connecting,SAFETY CRITICAL. Do not connect MT32 5V to board by default. Use jumper/solder bridge only after verification. See power safety rules.,NO
+TBD,3V3,Power,3.3V power,Board 3.3V rail,Power header — verify current strategy before connecting,SAFETY CRITICAL. Do not connect MT32 3.3V to board by default. Risk of back-feeding regulators. Use jumper/solder bridge only after verification.,NO
+TBD,GND,Power,GND,GND,Power header,Connect only after checking for shorts and confirming ground strategy.,NO

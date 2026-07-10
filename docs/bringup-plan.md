@@ -10,6 +10,8 @@ This document describes the staged bring-up plan for the MT32 / Teensy8x8AudioBo
 
 **Goal:** Confirm boards are correctly assembled and safe to power.
 
+> ⚠️ **Power safety rule:** Do not connect MT32 5 V or 3.3 V rails to the Teensy8x8AudioBoard by default. The initial interposer must use jumpers, solder bridges, or DNP links for any power connection — enabled only after explicit verification. See `docs/interposer-pinmap.md`, Power Strategy Notes.
+
 - [ ] Visually inspect Teensy8x8AudioBoard for solder bridges, missing components, or reversed SMD parts.
 - [ ] Verify SMD component orientations (ICs, electrolytic capacitors, diodes).
 - [ ] Verify jumper and solder bridge settings against the board documentation.
@@ -17,7 +19,9 @@ This document describes the staged bring-up plan for the MT32 / Teensy8x8AudioBo
 - [ ] Apply 5 V to the board from a **current-limited bench power supply** (start with ≤ 200 mA limit).
 - [ ] Verify 3.3 V rail comes up correctly.
 - [ ] Verify no excessive current draw (idle current should be a few tens of mA without MCU or audio active).
-- [ ] Do **not** connect any external audio equipment or the MT32 at this stage.
+- [ ] Connect MT32 and Teensy8x8 **grounds only after checking for shorts** and confirming the ground strategy.
+- [ ] Leave MT32 5 V and 3.3 V **unconnected** until verified — no back-feeding of regulators.
+- [ ] Do **not** connect any external audio equipment or the MT32 power rails at this stage.
 
 ---
 

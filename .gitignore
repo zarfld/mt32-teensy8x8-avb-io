@@ -13,8 +13,13 @@ fabrication/
 # KiCad netlist and symbol cache
 *.net
 *.xml
-sym-lib-table
-fp-lib-table
+# Note: sym-lib-table and fp-lib-table are project-local KiCad library tables.
+# They should normally be committed for reproducibility so that anyone cloning
+# the repo can open the project and find the correct libraries.
+# Only ignore these files if you are certain they contain machine-specific paths
+# that must not be shared.
+# sym-lib-table
+# fp-lib-table
 
 # Build outputs
 build/

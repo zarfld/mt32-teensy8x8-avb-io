@@ -17,7 +17,7 @@ The goal is a working 8-input / 8-output Milan/AVB audio interface using off-the
 - Reference: [joyned_mt32-evk](https://github.com/JOYNED-GmbH/joyned_mt32-evk) (see `external/joyned_mt32-evk`).
 
 ### Teensy8x8AudioBoard
-- Open hardware board by palmerr23 featuring two TLV320AIC3104 codecs on a PCA9546 I2C mux.
+- Open hardware board by palmerr23 featuring four TLV320AIC3104 codecs on a PCA9546 I2C mux.
 - Designed around Teensy 4.x MCU but exposes audio/clock/I2C on expansion headers.
 - Supports wing boards for TRS, XLR, or Combo connectors.
 - Reference: [Teensy8x8AudioBoard](https://github.com/palmerr23/Teensy8x8AudioBoard) (see `external/Teensy8x8AudioBoard`).

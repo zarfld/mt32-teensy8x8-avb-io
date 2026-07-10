@@ -47,14 +47,14 @@ None of these questions have been experimentally verified yet. All answers must 
 
 ### 7. Codec Tri-State on Shared TDM DO
 
-- The two TLV320AIC3104 codecs share a single TDM serial data output line (DO) to the MT32 FFC SDIOD_IN.
+- The four TLV320AIC3104 codecs share a single TDM serial data output line (DO) to the MT32 FFC SDIOD_IN.
 - Each codec must tri-state its output when not transmitting its assigned slot(s).
 - **Are the codecs correctly configured for TDM slot-based tri-stating out of reset, or must the MT32 (or initialisation firmware) explicitly program each codec's active slot range before driving any data onto the shared line?**
 - Failure to tri-state correctly will cause bus contention on the shared DO line.
 
 ### 8. TLV320AIC3104 Initialisation via PCA9546 I2C Mux
 
-- The two codecs are accessed through a PCA9546A I2C mux.
+- The four codecs are accessed through a PCA9546A I2C mux.
 - The MT32 must act as I2C master and select the correct mux channel before writing to each codec.
 - **What I2C address does the PCA9546A appear on?** (Default: 0x70–0x77 depending on A0–A2 pins — verify on board.)
 - **What I2C addresses do the TLV320AIC3104 codecs appear on once the mux channel is selected?** (Typically 0x18 or 0x19 depending on CS pin — verify on board.)
