@@ -8,7 +8,7 @@ Milan/AVB network
         └─> MT32 30-pin FFC system connector
               └─> custom interposer (this project)
                     └─> Teensy8x8AudioBoard TDM/audio/control pins
-                          └─> TLV320AIC3104 codec bank (×2, via PCA9546 I2C mux)
+                          └─> TLV320AIC3104 codec bank (×4, via PCA9546 I2C mux)
                                 └─> IDC wing connectors
                                       └─> TRS / XLR / Combo wing boards
 ```
@@ -67,6 +67,8 @@ MT32 SDA (FFC pin 23) / SCL (FFC pin 24)
   -> PCA9546A I2C mux
   -> TLV320AIC3104 codec #0 (channel 0)
   -> TLV320AIC3104 codec #1 (channel 1)
+  -> TLV320AIC3104 codec #2 (channel 2)
+  -> TLV320AIC3104 codec #3 (channel 3)
 ```
 
 ### Reset / GPIO

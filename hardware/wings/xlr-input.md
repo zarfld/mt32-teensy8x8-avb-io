@@ -11,7 +11,7 @@ See [`docs/wing-board-population.md`](../../docs/wing-board-population.md), sect
 ## Key Points
 
 - 8× XLR-F (female) panel connectors (pin 2 = hot, pin 3 = cold, pin 1 = GND).
-- 1 µF non-polarised AC coupling capacitors (≥ 50 V) on each differential input leg.
+- 1 µF or 10 µF AC coupling capacitors (≥ 10 V for normal non-phantom input use; ≥ 50 V only required where phantom power may appear) on each differential input leg.
 - 470 kΩ bleed resistors to bias floating inputs.
 - No phantom power support on this variant.
 - No 47 Ω output protection resistors (input path only).

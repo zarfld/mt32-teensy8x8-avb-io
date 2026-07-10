@@ -2,7 +2,7 @@
 
 ## TLV320AIC3104 Overview
 
-The Teensy8x8AudioBoard uses two Texas Instruments TLV320AIC3104 stereo audio codecs, each providing 4 ADC inputs and 4 DAC outputs (8 channels total per codec IC, 16 channels total for the board — though the board is configured for 8×8 in the standard bring-up).
+The Teensy8x8AudioBoard uses four Texas Instruments TLV320AIC3104 stereo audio codecs, each providing 4 ADC inputs and 4 DAC outputs (8 channels per codec IC, 32 channels total for the board — configured for 8×8 in the standard first-milestone bring-up).
 
 The codecs are controlled over I2C. Each codec is accessed by selecting the appropriate channel on the PCA9546A I2C mux before writing register commands.
 
@@ -14,7 +14,7 @@ The PCA9546A is a 4-channel I2C mux that sits between the I2C master (Teensy or 
 
 - **I2C address:** 0x70–0x77 depending on A0–A2 pin states. Verify on the Teensy8x8AudioBoard silkscreen or schematic.
 - To select a channel, write a single byte to the mux address: `0x01` for channel 0, `0x02` for channel 1, etc. Write `0x00` to deselect all channels.
-- Only one channel should be selected at a time to avoid I2C address collisions between the two codec ICs.
+- Only one channel should be selected at a time to avoid I2C address collisions between the codec ICs.
 
 ---
 
@@ -43,6 +43,8 @@ Verify which address is used for each codec on the Teensy8x8AudioBoard.
 8. Configure ADC/DAC channel mapping and gain.
 9. Power up ADC and DAC channels.
 10. Repeat for codec 1 (select mux channel for codec 1, then repeat register writes).
+11. Repeat for codec 2 (select mux channel for codec 2, then repeat register writes).
+12. Repeat for codec 3 (select mux channel for codec 3, then repeat register writes).
 
 See `external/control_TLV320AIC3104` for the Arduino library implementation of the above.
 

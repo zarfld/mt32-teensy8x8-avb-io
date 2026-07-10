@@ -11,11 +11,11 @@ See [`docs/wing-board-population.md`](../../docs/wing-board-population.md), sect
 ## Key Points
 
 - 8× balanced TRS female jacks (stereo, tip = hot, ring = cold, sleeve = GND).
-- 10 µF AC coupling capacitors (≥ 50 V) on each differential output leg.
+- 100 µF AC coupling capacitors (≥ 10 V) preferred on each differential output leg for better low-frequency response into lower impedance loads.
 - 47 Ω output protection resistors in series on each output leg (do not omit).
-- No bleed resistors (output path only).
+- Bleed resistor placement and populate/omit status must be checked against schematic/silkscreen — do not assume.
 
 ## Notes
 
-- Higher capacitor value (10 µF vs 1 µF on input) helps bass extension into low-impedance loads.
+- 100 µF (preferred) vs 10 µF: larger value improves bass extension into lower-impedance loads; ≥ 10 V is electrically sufficient unless another design constraint requires more.
 - 47 Ω output protection limits short-circuit current from the TLV320AIC3104 DAC output.

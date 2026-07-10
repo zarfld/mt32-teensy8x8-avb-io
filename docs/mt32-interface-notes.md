@@ -42,6 +42,20 @@ The MT32 uses a 30-pin FFC connector for the system interface. Key signal groups
 
 ---
 
+## Power Safety Rule
+
+> ⚠️ **Do not directly connect MT32 FFC power rails (5 V or 3.3 V) to the Teensy8x8AudioBoard by default.**
+>
+> The initial interposer must use jumpers, solder bridges, or DNP (Do Not Populate) links for power connection — enabled only after explicit verification of current budgets and regulator isolation.
+>
+> Initial safe bring-up:
+> - Power the Teensy8x8AudioBoard from a **separate current-limited bench 5 V supply**.
+> - Connect MT32 and Teensy8x8 **grounds only after checking for shorts** and confirming the ground strategy.
+> - Leave MT32 5 V and 3.3 V **unconnected** until the power strategy is verified.
+> - **No back-feeding of regulators** — if both boards provide 3.3 V, do not connect these rails until confirmed safe.
+
+---
+
 ## Known Unknowns / Verification Tasks
 
 - Exact mapping of all 30 FFC pins (not just audio/clock/I2C subset).

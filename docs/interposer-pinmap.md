@@ -12,19 +12,27 @@ The CSV version of this table lives in `hardware/interposer/pinmap/mt32-to-teens
 
 ## Pin Mapping Table
 
-| MT32 FFC Pin | MT32 Signal | Direction | Teensy8x8 Header Signal | Teensy MCU Pin (equiv.) | Notes |
-|---|---|---|---|---|---|
-| 6 | ADC_RST_N_OUT | MT32 → Board | Codec reset / GPIO | GPIO22 equivalent | Active-low. ⚠️ Verify polarity and drive level before connect. |
-| 9 | SDIOD_IN | Board → MT32 | TDM DO (codec output) | Pin 8 equivalent | Capture audio from board. |
-| 13 | SDIOB_OUT | MT32 → Board | TDM DI (codec input) | Pin 7 equivalent | Playback audio to board. |
-| 17 | SCLK_OUT | MT32 → Board | BCLK | Pin 21 equivalent | ⚠️ Board may invert BCLK — see open questions. |
-| 19 | LRCK_OUT | MT32 → Board | LRCK / SYNC | Pin 20 equivalent | Frame sync. Verify polarity. |
-| 21 | MCLK_OUT | MT32 → Board | MCLK | Pin 23 equivalent | 12.288 or 24.576 MHz — verify frequency. |
-| 23 | SDA | Bidirectional | I2C SDA | Teensy Wire SDA | Shared bus with PCA9546. Verify pull-up location. |
-| 24 | SCL | MT32 → Board | I2C SCL | Teensy Wire SCL | Verify pull-up location. |
-| TBD | 5 V | Power | 5 V power input | Board 5 V rail | ⚠️ Verify MT32 current capability before connecting. |
-| TBD | 3.3 V | Power | 3.3 V power | Board 3.3 V rail | ⚠️ Do not back-feed regulators. Verify isolation strategy. |
-| TBD | GND | Power | GND | GND | Multiple GND pins — connect all. |
+> ⚠️ Each row separates four concepts:
+> - **Logical signal name**: what the signal does.
+> - **Teensy pin equivalent**: the MCU I/O number associated with this signal.
+> - **Physical board connection point**: the actual connector pad on the physical PCB — **TBD for all signal rows; trace on actual board before connecting**.
+> - **Verification status**: whether this has been confirmed against hardware.
+>
+> Do not assume any audio/clock/control signal is present on the EXPAND header unless confirmed by tracing the net on the actual board.
+
+| MT32 FFC Pin | MT32 Signal | Direction | Logical Signal Name | Teensy pin equivalent | Physical board connection point | Verification status | Notes |
+|---|---|---|---|---|---|---|---|
+| 6 | ADC_RST_N_OUT | MT32 → Board | Codec reset / GPIO | GPIO22 equivalent | Physical board connection point TBD — trace on actual board before connecting | **UNVERIFIED** | Active-low. ⚠️ Verify polarity and drive level before connect. |
+| 9 | SDIOD_IN | Board → MT32 | TDM DO (codec output) | Pin 8 equivalent | Physical board connection point TBD — trace on actual board before connecting | **UNVERIFIED** | Capture audio from board. |
+| 13 | SDIOB_OUT | MT32 → Board | TDM DI (codec input) | Pin 7 equivalent | Physical board connection point TBD — trace on actual board before connecting | **UNVERIFIED** | Playback audio to board. |
+| 17 | SCLK_OUT | MT32 → Board | BCLK | Pin 21 equivalent | Physical board connection point TBD — trace on actual board before connecting | **UNVERIFIED** | ⚠️ Board may invert BCLK — see open questions. |
+| 19 | LRCK_OUT | MT32 → Board | LRCK / SYNC | Pin 20 equivalent | Physical board connection point TBD — trace on actual board before connecting | **UNVERIFIED** | Frame sync. Verify polarity. |
+| 21 | MCLK_OUT | MT32 → Board | MCLK | Pin 23 equivalent | Physical board connection point TBD — trace on actual board before connecting | **UNVERIFIED** | 12.288 or 24.576 MHz — verify frequency. |
+| 23 | SDA | Bidirectional | I2C SDA | Teensy Wire SDA | Physical board connection point TBD — trace on actual board before connecting | **UNVERIFIED** | Shared bus with PCA9546. Verify pull-up location. |
+| 24 | SCL | MT32 → Board | I2C SCL | Teensy Wire SCL | Physical board connection point TBD — trace on actual board before connecting | **UNVERIFIED** | Verify pull-up location. |
+| TBD | 5 V | Power | 5 V power input | Board 5 V rail | Power header — verify current strategy before connecting | **UNVERIFIED** | ⚠️ See power safety rules below. Do not connect by default. |
+| TBD | 3.3 V | Power | 3.3 V power | Board 3.3 V rail | Power header — verify current strategy before connecting | **UNVERIFIED** | ⚠️ See power safety rules below. Do not connect by default. |
+| TBD | GND | Power | GND | GND | Power header | **UNVERIFIED** | Multiple GND pins — connect only after checking for shorts and confirming ground strategy. |
 
 ---
 
@@ -32,12 +40,21 @@ The CSV version of this table lives in `hardware/interposer/pinmap/mt32-to-teens
 
 > ⚠️ **Power pin assignments and power strategy must be verified before any hardware is connected. Incorrect power connections can permanently damage both the MT32 and the Teensy8x8AudioBoard.**
 
-Key questions:
+### Safety Rule: Do Not Directly Connect MT32 Power Rails by Default
+
+**The initial interposer revision must not directly connect MT32 5 V or 3.3 V rails to the Teensy8x8AudioBoard by default.** Use jumpers, solder bridges, or explicit DNP (Do Not Populate) links for optional power connection only — and only after explicit verification.
+
+Initial safe bring-up procedure:
+- Power the Teensy8x8AudioBoard from a **separate current-limited bench 5 V supply** (start at ≤ 200 mA limit).
+- Connect MT32 and Teensy8x8 **grounds only after checking for shorts** and confirming the ground strategy.
+- Leave MT32 5 V and 3.3 V **unconnected** unless explicitly enabled by a verified jumper/solder bridge strategy.
+- **No back-feeding of regulators** — if both boards have their own 3.3 V regulators, connecting the 3.3 V rails together will cause them to fight. Verify isolation before any connection.
+- All power pin entries remain marked **UNVERIFIED** until explicitly confirmed.
+
+Key questions still open:
 - Can the MT32 FFC 5 V supply the Teensy8x8AudioBoard's total current draw (codec bank + wing boards)?
 - Are the MT32 3.3 V and the board's 3.3 V regulator output isolated, or will they fight?
-- Should the board be powered from a separate external supply and the MT32 FFC 5 V/3.3 V left open or use only as a reference?
-
-Recommendation: Use a separate bench power supply for the Teensy8x8AudioBoard during initial bring-up. Connect MT32 FFC power only after verifying current budgets.
+- Should the board be powered from a separate external supply and the MT32 FFC 5 V/3.3 V left open?
 
 ---
 
