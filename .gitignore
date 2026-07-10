@@ -1,0 +1,61 @@
+# KiCad
+*.kicad_prl
+*.kicad_dbl
+fp-info-cache
+_autosave-*
+*.bak
+*.orig
+*.sch-bak
+*.kicad_pcb-bak
+gerbers/
+fabrication/
+
+# KiCad netlist and symbol cache
+*.net
+*.xml
+sym-lib-table
+fp-lib-table
+
+# Build outputs
+build/
+dist/
+out/
+output/
+*.o
+*.elf
+*.bin
+*.hex
+*.map
+
+# Python virtual environments and caches
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Node (if any tooling)
+node_modules/
+
+# Logs
+*.log
+*.tmp
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.directory
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.sublime-workspace
+
+# Temporary files
+*.tmp
+*.temp
+/tmp/
+
+# Submodule lock artefacts (submodule directories themselves are tracked)
+# (intentionally empty — submodule directories are versioned via .gitmodules)

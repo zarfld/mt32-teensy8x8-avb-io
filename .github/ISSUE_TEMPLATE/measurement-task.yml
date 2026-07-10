@@ -1,0 +1,52 @@
+name: Measurement Task
+description: Track a measurement, characterisation, or test task.
+title: "[MEAS] "
+labels: ["measurement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for measurement and test tasks: analog level measurements, oscilloscope captures, logic analyser captures, THD+N tests, etc.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What needs to be measured or tested?
+      placeholder: Describe the measurement clearly.
+    validations:
+      required: true
+
+  - type: textarea
+    id: setup
+    attributes:
+      label: Test Setup
+      description: Equipment required and how to set up the test.
+      placeholder: |
+        - Equipment: oscilloscope, audio analyser, signal generator, etc.
+        - Signal source: e.g. 1 kHz sine at -10 dBu
+        - Connection: e.g. inject on TRS input 1, measure on TRS output 1
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Result
+      description: What result do we expect? (Even if uncertain — document your prior assumption.)
+      placeholder: e.g. "Expect ~+10 dBu output at 0 dBFS."
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: What counts as a passing result?
+      placeholder: |
+        - [ ] Measurement taken and value recorded
+        - [ ] Result documented in docs/test-equipment.md
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes
+      description: Safety precautions, calibration requirements, or related issues.
