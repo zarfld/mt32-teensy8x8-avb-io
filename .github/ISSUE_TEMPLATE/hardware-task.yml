@@ -1,0 +1,58 @@
+name: Hardware Task
+description: Track a hardware design, build, assembly, or rework task.
+title: "[HW] "
+labels: ["hardware"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for hardware tasks: schematic work, PCB layout, assembly, rework, or component research.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What hardware task needs to be done?
+      placeholder: Describe the task clearly.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context / Background
+      description: Why is this task needed? Link to relevant docs or prior issues.
+      placeholder: e.g. "Required for Stage 2 of bring-up plan. See docs/bringup-plan.md."
+
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Bring-Up Stage
+      description: Which bring-up stage does this task belong to?
+      options:
+        - "Stage 0 – Board inspection and power verification"
+        - "Stage 1 – Teensy8x8 with Teensy MCU"
+        - "Stage 2 – Interposer build"
+        - "Stage 3 – Clock and data verification"
+        - "Stage 4 – Audio path verification"
+        - "Stage 5 – Level and headroom evaluation"
+        - "Not stage-specific"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: How do we know this task is done?
+      placeholder: |
+        - [ ] Item 1
+        - [ ] Item 2
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes / Safety Concerns
+      description: Any safety considerations, open questions, or related issues.

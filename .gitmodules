@@ -1,0 +1,12 @@
+[submodule "external/joyned_mt32-evk"]
+	path = external/joyned_mt32-evk
+	url = https://github.com/JOYNED-GmbH/joyned_mt32-evk
+[submodule "external/Teensy8x8AudioBoard"]
+	path = external/Teensy8x8AudioBoard
+	url = https://github.com/palmerr23/Teensy8x8AudioBoard
+[submodule "external/control_TLV320AIC3104"]
+	path = external/control_TLV320AIC3104
+	url = https://github.com/palmerr23/control_TLV320AIC3104
+[submodule "external/TeensyAudio"]
+	path = external/TeensyAudio
+	url = https://github.com/PaulStoffregen/Audio

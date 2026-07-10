@@ -1,0 +1,52 @@
+name: Research Task
+description: Track a research, documentation, or investigation task.
+title: "[RESEARCH] "
+labels: ["research"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for research and investigation tasks: datasheet analysis, pinout verification, compatibility research, open-question resolution, etc.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What needs to be researched or investigated?
+      placeholder: Describe the question or topic clearly.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context / Background
+      description: Why is this research needed? Link to relevant docs or prior issues.
+      placeholder: e.g. "Needed to resolve open question in docs/tdm-format-open-questions.md."
+
+  - type: textarea
+    id: sources
+    attributes:
+      label: Known Sources / Starting Points
+      description: Datasheets, EVK documentation, forum posts, or upstream repositories to consult.
+      placeholder: |
+        - MT32 EVK schematic: external/joyned_mt32-evk
+        - TLV320AIC3104 datasheet: TI website
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: What does a completed research task look like?
+      placeholder: |
+        - [ ] Question answered with a specific, traceable value or fact
+        - [ ] Finding documented in the relevant docs/ file
+        - [ ] Any required follow-up hardware or measurement tasks filed
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes
+      description: Caveats, known unknowns, or related issues.
