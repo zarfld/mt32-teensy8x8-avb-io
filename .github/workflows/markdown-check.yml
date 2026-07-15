@@ -4,9 +4,13 @@ on:
   push:
     paths:
       - '**/*.md'
+      - '.markdownlint.json'
+      - '.github/workflows/markdown-check.yml'
   pull_request:
     paths:
       - '**/*.md'
+      - '.markdownlint.json'
+      - '.github/workflows/markdown-check.yml'
 
 jobs:
   markdown-lint:
