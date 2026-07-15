@@ -13,6 +13,7 @@ The CSV version of this table lives in `hardware/interposer/pinmap/mt32-to-teens
 ## Pin Mapping Table
 
 > ⚠️ Each row separates four concepts:
+>
 > - **Logical signal name**: what the signal does.
 > - **Teensy pin equivalent**: the MCU I/O number associated with this signal.
 > - **Physical board connection point**: the actual connector pad on the physical PCB — **TBD for all signal rows; trace on actual board before connecting**.
@@ -45,6 +46,7 @@ The CSV version of this table lives in `hardware/interposer/pinmap/mt32-to-teens
 **The initial interposer revision must not directly connect MT32 5 V or 3.3 V rails to the Teensy8x8AudioBoard by default.** Use jumpers, solder bridges, or explicit DNP (Do Not Populate) links for optional power connection only — and only after explicit verification.
 
 Initial safe bring-up procedure:
+
 - Power the Teensy8x8AudioBoard from a **separate current-limited bench 5 V supply** (start at ≤ 200 mA limit).
 - Connect MT32 and Teensy8x8 **grounds only after checking for shorts** and confirming the ground strategy.
 - Leave MT32 5 V and 3.3 V **unconnected** unless explicitly enabled by a verified jumper/solder bridge strategy.
@@ -52,6 +54,7 @@ Initial safe bring-up procedure:
 - All power pin entries remain marked **UNVERIFIED** until explicitly confirmed.
 
 Key questions still open:
+
 - Can the MT32 FFC 5 V supply the Teensy8x8AudioBoard's total current draw (codec bank + wing boards)?
 - Are the MT32 3.3 V and the board's 3.3 V regulator output isolated, or will they fight?
 - Should the board be powered from a separate external supply and the MT32 FFC 5 V/3.3 V left open?
@@ -61,6 +64,7 @@ Key questions still open:
 ## Reset Behavior Notes
 
 > ⚠️ **Codec reset pin behavior requires verification:**
+>
 > - Is `ADC_RST_N_OUT` truly active-low?
 > - What is the output voltage level (3.3 V logic or 1.8 V logic)?
 > - Does the MT32 assert reset on startup, or is it driven high by default?

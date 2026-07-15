@@ -1,6 +1,6 @@
 # mt32-teensy8x8-avb-io
 
-**MT32 Milan/AVB to TDM 8x8 audio I/O integration prototype**
+MT32 Milan/AVB to TDM 8x8 audio I/O integration prototype
 
 > ⚠️ This is not a production-ready hardware design. All schematics, pin mappings, and measurements are working assumptions under active verification.
 

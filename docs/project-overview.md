@@ -11,18 +11,21 @@ The goal is a working 8-input / 8-output Milan/AVB audio interface using off-the
 ## Key Components
 
 ### JOYNED MT32
+
 - Milan-certified AVB endpoint module (SoM form factor).
 - Provides clocked TDM/I2S audio output and input over a 30-pin FFC system connector.
 - Exposes MCLK, BCLK, LRCK, TDM data I/O, I2C, and GPIOs through the FFC.
 - Reference: [joyned_mt32-evk](https://github.com/JOYNED-GmbH/joyned_mt32-evk) (see `external/joyned_mt32-evk`).
 
 ### Teensy8x8AudioBoard
+
 - Open hardware board by palmerr23 featuring four TLV320AIC3104 codecs on a PCA9546 I2C mux.
 - Designed around Teensy 4.x MCU but exposes audio/clock/I2C on expansion headers.
 - Supports wing boards for TRS, XLR, or Combo connectors.
 - Reference: [Teensy8x8AudioBoard](https://github.com/palmerr23/Teensy8x8AudioBoard) (see `external/Teensy8x8AudioBoard`).
 
 ### Custom Interposer
+
 - Passive (or minimally active) adapter PCB that translates the MT32 FFC connector signals to the Teensy8x8AudioBoard pin headers.
 - Routes MCLK, BCLK, LRCK, TDM data, I2C, reset GPIO, and power.
 - Design files will live in `hardware/interposer/`.

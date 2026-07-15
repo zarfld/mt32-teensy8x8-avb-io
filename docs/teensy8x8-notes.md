@@ -24,6 +24,7 @@ Pending verification task: see `docs/bringup-plan.md`, Stage 0, item "Verify Tee
 ## Key Expansion Header Signals (Working Assumptions)
 
 > ⚠️ The columns below separate four concepts that must not be conflated:
+>
 > - **Logical signal**: what the signal does.
 > - **Teensy pin equivalent**: the MCU I/O number associated with this signal in the firmware.
 > - **Physical board connection point**: the actual pad or connector pin on the physical PCB — **TBD for each signal; trace on actual board before connecting**.
