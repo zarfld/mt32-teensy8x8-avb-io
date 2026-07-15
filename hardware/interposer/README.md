@@ -19,6 +19,7 @@ The interposer is a passive (or minimally active) adapter PCB that:
 > Use jumpers, solder bridges, or DNP (Do Not Populate) links for optional power connection only — and only after explicit verification.
 >
 > Initial safe bring-up:
+>
 > - Teensy8x8AudioBoard powered from a separate current-limited bench 5 V supply.
 > - MT32 and Teensy8x8 grounds connected only after checking for shorts and ground strategy.
 > - MT32 5 V and 3.3 V left unconnected unless explicitly enabled by a verified jumper strategy.

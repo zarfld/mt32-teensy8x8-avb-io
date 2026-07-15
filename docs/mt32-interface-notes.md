@@ -49,6 +49,7 @@ The MT32 uses a 30-pin FFC connector for the system interface. Key signal groups
 > The initial interposer must use jumpers, solder bridges, or DNP (Do Not Populate) links for power connection — enabled only after explicit verification of current budgets and regulator isolation.
 >
 > Initial safe bring-up:
+>
 > - Power the Teensy8x8AudioBoard from a **separate current-limited bench 5 V supply**.
 > - Connect MT32 and Teensy8x8 **grounds only after checking for shorts** and confirming the ground strategy.
 > - Leave MT32 5 V and 3.3 V **unconnected** until the power strategy is verified.

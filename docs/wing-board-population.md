@@ -29,6 +29,7 @@ This document provides a population reference for the various wing board variant
 | Series insertion footprints | R9–R16 (0 Ω / DNP) | Signal path series position | Reserve for future input pad series element — see `docs/input-pad-design.md`; these are series insertion points only, not a complete pad |
 
 ### Notes
+
 - 470 kΩ bleed resistors bias the differential input to mid-rail when no source is connected.
 - Coupling capacitors: 1 µF is sufficient for line-level inputs; 10 µF acceptable for conservative low-frequency margin.
 - 50 V rating is acceptable if mechanically fitting, but is not required for normal TRS line-level input; ≥ 10 V is the minimum electrical requirement.
@@ -46,6 +47,7 @@ This document provides a population reference for the various wing board variant
 | Output protection resistors | 47 Ω | R1–R8 (series on hot+cold) | Limit short-circuit current from codec output |
 
 ### Notes
+
 - 47 Ω output protection resistors are standard on the codec DAC output path. Do not omit.
 - 100 µF coupling capacitors preferred for output: larger value reduces bass roll-off into low-impedance loads; 10 V or greater is electrically sufficient unless another design constraint requires more.
 - Bleed resistor placement and populate/omit status must be checked against schematic/silkscreen — do not state definitively without that verification.
@@ -62,6 +64,7 @@ This document provides a population reference for the various wing board variant
 | Phantom blocking capacitors | **Not populated** | — | No phantom power support on this variant |
 
 ### Notes
+
 - No phantom power on this variant. Use Phantom XLR Input Wing for microphone inputs.
 - Normal non-phantom XLR line inputs do not require non-polarised 50 V capacitors; ≥ 10 V is the minimum electrical requirement.
 - 50 V capacitors are only required where phantom power (+48 V) may appear on the line.
@@ -78,6 +81,7 @@ This document provides a population reference for the various wing board variant
 | Output protection resistors | 47 Ω placement must be verified against schematic/silkscreen | R1–R8 per channel | Short-circuit protection |
 
 ### Notes
+
 - XLR-M connectors: verify footprint.
 - 47 Ω output protection resistor placement must be verified against schematic/silkscreen before asserting populate/omit.
 - Same general component strategy as TRS Output Wing; connectors differ.
@@ -93,6 +97,7 @@ This document provides a population reference for the various wing board variant
 | Output protection resistors | **Omitted / linked** | — | Not needed on input wing |
 
 ### Notes
+
 - Input-only wing.
 - Combo XLR/TRS jacks: verify panel footprint and switching contacts.
 - Switching contacts on combo jacks may route TRS or XLR signal — verify which is normalised.
@@ -110,6 +115,7 @@ This document provides a population reference for the various wing board variant
 | Output protection resistors | **Omitted / linked** | — | Not needed on input |
 
 ### Notes
+
 - Phantom power (+48 V) requires a dedicated supply rail not present on the current Teensy8x8AudioBoard.
 - ≥ 50 V capacitor rating is required for phantom blocking (50 V or higher).
 - Phantom feed resistor value approximately 6.8 kΩ for 48 V operation — verify against schematic before ordering.
